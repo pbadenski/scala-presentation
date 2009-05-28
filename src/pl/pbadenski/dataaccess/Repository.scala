@@ -38,5 +38,5 @@ object Repository {
  
 	def companyArchive = Map[Customer, List[Company]](JAN_KOWALSKI -> List(RADIO_ESKA))
  
-	def findByName(name : String) = objects find { _.firstName == name };
+	def findByName(name : String) = objects.find { _.firstName == name }
 }

@@ -23,8 +23,8 @@ object Mappings {
 	      jspFileForView
 	  }
    	}
- 
-	def findAction(path : String) = pathMappings.reduceLeft { (f , s) => s orElse f }(path)
+
+	def findAction(path : String) = pathMappings.reduceLeft { (f , s) => f orElse s }(path)
  
 	def trimSlashesAndSuffix(path : String) = {
 	  val Trimmer = """/?(.*)\.action""".r

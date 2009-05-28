@@ -31,7 +31,7 @@ import model.order.Order._
  *  - Main 3 e)
  * 	- Zmienić Printable na type i pokazać static duck typing
  *  - Main 3 e) 
- *  - ! Problem: Chcemy znaleźć dawne firmy użytkownika, są dostępne poza object graph traversal
+ *  - ! Problem: Chcemy znaleźć dane firmy użytkownika, są dostępne poza object graph traversal
  *  - Dodać klasę Company
  *  - Rozbudować Repository.objects
  *  - Dodać kwerendę Customer.fetchArchivedCompanies(c : Cutomer)
@@ -60,7 +60,7 @@ object Main {
 			val repository = dataaccess.Repository
 
 			// 2 a) easy implementation of queries and collection transformations
-			val jan = repository.findByName("Jan").get
+			val jan = repository.findByName("Jan").get 
 			println(jan);
 			// 2 b)
 			// try {
@@ -136,10 +136,7 @@ class TransactionManager(sessionFactory : String) {
 	implicit var transaction : Transaction = _
 
 	def transactional(body : => Unit)(implicit transaction : Transaction) = {
-	if (transaction == null) {
-		println(sessionFactory)
-		error("no transaction present")
-	}
+	if (transaction == null) { error("no transaction present") }
 	println("Begin transaciton")
 	body;
 	println("End transaciton")
