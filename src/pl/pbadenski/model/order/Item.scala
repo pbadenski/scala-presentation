@@ -13,6 +13,10 @@ class Item(
 		name : String,
 		category : String
 ) {
-
+  def process() = {
+    println("processing")
+    true
+  }
+  
   override def toString = List(name, category).map(_.mkString("'", "", "'")).mkString("Item(", ", ", ")")
 }

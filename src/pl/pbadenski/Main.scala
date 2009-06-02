@@ -73,8 +73,11 @@ object Main {
 			
 			// 3 a) again easy collection transformations
 			// val cards = repository.customers.map { new BusinessCard(c.getFullName, c.company.name)}
-			// 3 b)
+			// 3 b) 
+				// 1st version
 			val cards = repository.customers.map { BusinessCard.create(_) }
+				// 2nd version
+			val cards2 = for (c <- repository.customers) yield BusinessCard.create(c)
 			// 3 c)
 			// new Printer.print(cards(0).textForPrinting)
 			// 3 d)
@@ -87,7 +90,7 @@ object Main {
 			// 4 b) traits, abstracting over self-type, killing procedural code
 			println(jan.findFirstCompany)
 
-			// 5 anonymous types aka static duck typing 
+			// 5 anonymous types aka static duck typing
 			List[HasAddress](jan, jan.findFirstCompany).foreach { eachRecipient =>
 			new Order(eachRecipient, 
 					List(

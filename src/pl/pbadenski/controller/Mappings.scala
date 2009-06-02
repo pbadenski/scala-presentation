@@ -8,7 +8,7 @@ object Mappings {
 
 	def process(request : HttpServletRequest, response : HttpServletResponse, path : String) = {
 	  def fillRequestAttributesWithResultProperties(result : AnyRef) = {
-	    var properties = java.beans.Introspector.getBeanInfo(result.getClass).getPropertyDescriptors
+	    val properties = java.beans.Introspector.getBeanInfo(result.getClass).getPropertyDescriptors
 	    properties.foreach { prop => prop match {
 	      	case _ if prop.getName == "class" => ()
 	      	case _ => request.setAttribute(prop.getName, prop.getReadMethod.invoke(result))
