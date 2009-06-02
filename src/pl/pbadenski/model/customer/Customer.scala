@@ -22,11 +22,21 @@ object Customer //DAO
 }
 
 trait CustomerService { self : Customer =>
+  val transactionManager : helpers.TransactionManager
+  import transactionManager._
+  
   private val customerDao = Customer
   
   def findFirstCompany = {
-    customerDao.fetchArchivedCompanies(self).first
+    transactional {
+    	customerDao.fetchArchivedCompanies(self).first      
+    }
   }
+}
+
+trait CustomerService2 {
+    val transactionManager : helpers.TransactionManager
+  import transactionManager._
 }
 
 class Customer(

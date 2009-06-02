@@ -21,7 +21,7 @@ object Repository {
 							"Wrocławska 122", 
 							"Wałbrzych", 
 							"53-321"),
-					POWER_MEDIA) with CustomerService;
+					POWER_MEDIA) with CustomerService { val transactionManager = helpers.TransactionManager.get };
 	private val objects = List(
 			JAN_KOWALSKI,
 			new Customer(2, 
@@ -31,7 +31,7 @@ object Repository {
 							"Kazimierza wielkiego 15", 
 							"Wrocław", 
 							"53-304"),
-					POWER_MEDIA) with CustomerService
+					POWER_MEDIA) with CustomerService { val transactionManager = helpers.TransactionManager.get }
 	)
  
 	def customers = objects

@@ -16,7 +16,9 @@ object Order {
 class Order(
   recipient : Order.HasAddress, 
   items : Seq[Item]
-) {
+) extends Processable {
+	type T = OrderProcessResult
+  
 	def send() {
 		println("Sending to address: " + recipient.address);
 	}

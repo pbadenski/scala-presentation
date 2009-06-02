@@ -12,7 +12,9 @@ object Item {
 class Item(
 		name : String,
 		category : String
-) {
+) extends Processable {
+  type T = Boolean
+  
   def process() = {
     println("processing")
     true
