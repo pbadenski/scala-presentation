@@ -6,73 +6,73 @@ import model.order.Order._;
 import helpers.TransactionManager.get._
 
 /**
- * Chcę podkreślić:
- * 	- skalowalność,
- *  - ekspresywność
- * 	- budowa języka na bazie języka
- *  - rozbudowa przez język a nie magiczne zabawy z bytecodem, transformacją w locie, proxy, AspectJ, etc.
+ * Things to highlight:
+ * 	- scalability,
+ *  - expresivness,
+ * 	- ability to build new language on the base of existing language,
+ *  - extensible through the language syntax not magic tricks like bytecode manipulation, class transformation on the fly, proxies, AspectJ, etc.
  * 
  * Plan:
- *  - Stworzyć klasę Customer (java, scala)
- *  - Dodać akcesory do klasy Customer (java, scala)
- *  - Dodać metodę getFullName do Customer (java, scala)
- *  - Dodać Repository i Repository.objects (java, scala)
- *  - Main 1) stworzyć repository
+ *  - Create Customer class (java, scala)
+ *  - Add accessors to Customer class (java, scala)
+ *  - Add getFullName method to Customer class (java, scala)
+ *  - Add Repository and Repository.objects (java, scala)
+ *  - Main 1) create repository
  * 
- *  - Dodać kwerendę Customer.findByName (java, scala)
- *  - Main 2) Wykorzystać kwerendę
+ *  - Add query Customer.findByName (java, scala)
+ *  - Main 2) User query
  * 
- *  - Od tego momentu już tylko Scala
+ *  - Just Scala from now on
  * 
- *  - ! Problem: Chcemy drukować wizytówki klientów
- *  - Stworzyć klasę BusinessCard
+ *  - ! Problem: We'd like to print business cards for clients
+ *  - Create BusinessCard class
  *  - Main 3 a)
  * 
- * 	- Stworzyć faktorkę BusinessCard.create(c : Customer)
+ * 	- Create factory method BusinessCard.create(c : Customer)
  * 	- Main 3 b)
  * 
- *  - Stworzyć klasę Printer z metodą Printer.print(textForPrinting : String)
- *  - dodać metodę BusinessCard.textForPrinting
+ *  - Create Printer class with a methods Printer.print(textForPrinting : String)
+ *  - Add a method BusinessCard.textForPrinting
  *  - Main 3 c)
  * 
- *  - Dodać interfejs Printable z metodą Printable.textForPrining
- * 	- Dodać BusinessCard extends Printable
- *  - Zrefaktoryzować Printer.print(textForPrinting) => Printer.print(forPrinting : Printable)
+ *  - Add an interface Printable with a method Printable.textForPrining
+ * 	- Add BusinessCard extends Printable
+ *  - Refactor Printer.print(textForPrinting) to Printer.print(forPrinting : Printable)
  *  - Main 3 d)
  * 
- *  - Zmienić Printer na DefaultPrinter
- * 	- Dodać trait Printer
- *  - Zmienić Printable na self-type
+ *  - Change Printer to DefaultPrinter
+ * 	- Add trait Printer
+ *  - Change Printable to self-type
  *  - Main 3 e)
  * 
- * 	- Zmienić Printable na type i pokazać static duck typing
+ * 	- Change Printable to type and show static duck typing
  *  - Main 3 e)
  * 
- *  - ! Problem: Chcemy znaleźć dane firmy użytkownika, są dostępne poza object graph traversal
- *  - Dodać klasę Company
- *  - Rozbudować Repository.objects
- *  - Dodać kwerendę Customer.fetchArchivedCompanies(c : Cutomer)
- *  - Dodać CustomerService i metodę CustomerService.findFirstCompany(c : Customer)
+ *  - ! Problem: We'd like to find data of user's company, but it is not reachable via object graph traversal
+ *  - Add Company class
+ *  - Extend Repository.objects
+ *  - Add a query Customer.fetchArchivedCompanies(c : Cutomer)
+ *  - Add CustomerService and a method CustomerService.findFirstCompany(c : Customer)
  *  - Main 4 a)
  * 
- *  - Zmienić CustomerService.findFirstCompany(c) na CustomerService.findFirstCompany z self typem
+ *  - Change CustomerService.findFirstCompany(c) to CustomerService.findFirstCompany with self type
  * 	- Main 4 b)
  * 
- *  - ! Problem: Chcemy wysyłać zamówienia pod adresy - kiedy static duck typing sie przydaje
- *  - Stworzyć klasę Order
- *  - Zreorganizować paczki
- *  - Dodać trait HasAddress i Customer extends HasAddress oraz Order extends HasAddress
- *  - Dodać metodę Order.send
+ *  - ! Problem: We'd like to send orders to addresses - static duck typing made useful
+ *  - Create class Order
+ *  - Reorganise packages
+ *  - Add trait HasAddress and Customer extends HasAddress and also Order extends HasAddress
+ *  - Add a method Order.send
  *  - Main 5
  * 
- *  - Zmienić trait HasAddress na type object Order.HasAddress
+ *  - Change trait HasAddress to type object Order.HasAddress
  * 	- Main 5
  * 
- *  - ! Problem: Chcemy transakcyjność deklaratywną
+ *  - ! Problem: We'd like to have declarative transaction management
  *  - ....
- *  - ! Problem: Chcem tworzyć zamówienia na podstawie dokumentu XML 
- *  - Zaimplementować klasę Order.fromXML
- *  - Zaimplementować klasę Item.fromXML
+ *  - ! Problem: We'd like to create orders based on XML document
+ *  - Implement a method Order.fromXML
+ *  - Implement a method Item.fromXML
  *  - Main 7
  */
 object Main {
